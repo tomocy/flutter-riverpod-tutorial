@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod_tutorial/counter.dart';
+import 'package:flutter_riverpod_tutorial/todo/TodoList.dart';
 
 class App extends StatelessWidget {
   // This widget is the root of your application.
@@ -10,7 +10,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Counter(),
+      home: const TodoList(),
     );
   }
 }
