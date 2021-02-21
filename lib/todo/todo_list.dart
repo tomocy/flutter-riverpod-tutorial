@@ -3,13 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod_tutorial/todo/todo.dart' as model;
 
 final todoListProvider = StateNotifierProvider((_) => model.TodoList([
-      model.Todo.uuid(
+      model.Todo.withRandomId(
         title: 'Buy some milk',
       ),
-      model.Todo.uuid(
+      model.Todo.withRandomId(
         title: 'Sleep well',
       ),
-      model.Todo.uuid(
+      model.Todo.withRandomId(
         title: 'Get up early',
       ),
     ]));
@@ -35,8 +35,8 @@ class TodoList extends StatelessWidget {
                 },
                 background: Container(
                   color: Colors.red,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 16),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Icon(
@@ -60,7 +60,7 @@ class TodoList extends StatelessWidget {
       ),
       bottomSheet: Container(
         child: TextField(
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'What needs to be done?',
           ),
           onSubmitted: (title) {

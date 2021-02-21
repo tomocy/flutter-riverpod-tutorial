@@ -1,8 +1,14 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:uuid/uuid.dart';
 
-const _uuid = Uuid();
+String _generateRandomString(int len) {
+  final random = Random.secure();
+  final values = List<int>.generate(len, (i) => random.nextInt(255));
+  return base64Url.encode(values);
+}
 
 class TodoList extends StateNotifier<List<Todo>> {
   TodoList([List<Todo> initial]) : super(initial ?? []);
@@ -10,7 +16,7 @@ class TodoList extends StateNotifier<List<Todo>> {
   void add(String title) {
     state = [
       ...state,
-      Todo.uuid(title: title),
+      Todo.withRandomId(title: title),
     ];
   }
 
@@ -31,11 +37,11 @@ class Todo {
   })  : assert(id != null),
         assert(title != null);
 
-  Todo.uuid({
+  Todo.withRandomId({
     @required String title,
     bool completed = false,
   }) : this(
-          id: _uuid.v4(),
+          id: _generateRandomString(10),
           title: title,
           completed: completed,
         );
@@ -46,8 +52,8 @@ class Todo {
 
   Todo toggle() {
     return Todo(
-      id: this.id,
-      title: this.title,
+      id: id,
+      title: title,
       completed: !completed,
     );
   }
