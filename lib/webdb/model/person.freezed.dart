@@ -104,7 +104,7 @@ class __$PersonCopyWithImpl<$Res> extends _$PersonCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Person with DiagnosticableTreeMixin implements _Person {
-  _$_Person({@required this.name, @required this.age})
+  const _$_Person({@required this.name, @required this.age})
       : assert(name != null),
         assert(age != null);
 
@@ -158,7 +158,7 @@ class _$_Person with DiagnosticableTreeMixin implements _Person {
 }
 
 abstract class _Person implements Person {
-  factory _Person({@required String name, @required int age}) = _$_Person;
+  const factory _Person({@required String name, @required int age}) = _$_Person;
 
   factory _Person.fromJson(Map<String, dynamic> json) = _$_Person.fromJson;
 

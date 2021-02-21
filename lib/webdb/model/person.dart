@@ -6,7 +6,7 @@ part 'person.g.dart';
 
 @freezed
 abstract class Person with _$Person {
-  factory Person({
+  const factory Person({
     @required String name,
     @required int age,
   }) = _Person;

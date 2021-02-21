@@ -5,6 +5,7 @@ targets:
         generate_for:
           include:
             - lib/webdb/model/*.dart
+            - lib/webdb/controller/*_state.dart
       json_serializable:
         generate_for:
           include:
